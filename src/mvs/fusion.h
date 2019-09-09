@@ -101,10 +101,11 @@ class StereoFusion : public Thread {
                const std::string& pmvs_option_name,
                const std::string& input_type);
 
+
   const std::vector<PlyPoint>& GetFusedPoints() const;
   const std::vector<std::vector<int>>& GetFusedPointsVisibility() const;
 
- private:
+ protected:
   void Run();
   void Fuse();
 

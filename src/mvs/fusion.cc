@@ -187,6 +187,7 @@ void StereoFusion::Run() {
 
   const auto image_names = ReadTextFileLines(JoinPaths(
       workspace_path_, workspace_options.stereo_folder, "fusion.cfg"));
+
   for (const auto& image_name : image_names) {
     const int image_idx = model.GetImageIdx(image_name);
 
@@ -224,6 +225,7 @@ void StereoFusion::Run() {
     K(0, 2) *= bitmap_scales_.at(image_idx).first;
     K(1, 1) *= bitmap_scales_.at(image_idx).second;
     K(1, 2) *= bitmap_scales_.at(image_idx).second;
+
 
     ComposeProjectionMatrix(K.data(), image.GetR(), image.GetT(),
                             P_.at(image_idx).data());
@@ -373,6 +375,12 @@ void StereoFusion::Fuse() {
     const Eigen::Vector3f xyz =
         inv_P_.at(image_idx) *
         Eigen::Vector4f(col * depth, row * depth, depth, 1.0f);
+
+
+    // std::cout << "image_idx: " << image_idx << " xyz: " << xyz << std::endl;
+
+
+
 
     // Read the color of the pixel.
     BitmapColor<uint8_t> color;
