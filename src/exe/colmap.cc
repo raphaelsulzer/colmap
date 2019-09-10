@@ -50,7 +50,6 @@
 #include "ui/main_window.h"
 #include "util/opengl_utils.h"
 #include "util/version.h"
-#include "mvs/depthMapConverter.h"
 
 using namespace colmap;
 
@@ -296,22 +295,22 @@ int RunStereoFuser(int argc, char** argv) {
     return EXIT_FAILURE;
   }
 
-  mvs::DataCollector coll(*options.stereo_fusion, workspace_path,
-                          workspace_format, pmvs_option_name, input_type);
-
-  coll.getData();
-
-
-  // mvs::StereoFusion fuser(*options.stereo_fusion, workspace_path,
+  // mvs::DepthMapConverter coll(*options.stereo_fusion, workspace_path,
   //                         workspace_format, pmvs_option_name, input_type);
 
-  // fuser.Start();
-  // fuser.Wait();
+  // coll.convert();
 
-  // std::cout << "Writing output: " << output_path << std::endl;
-  // WriteBinaryPlyPoints(output_path, fuser.GetFusedPoints());
-  // mvs::WritePointsVisibility(output_path + ".vis",
-  //                            fuser.GetFusedPointsVisibility());
+
+  mvs::StereoFusion fuser(*options.stereo_fusion, workspace_path,
+                          workspace_format, pmvs_option_name, input_type);
+
+  fuser.Start();
+  fuser.Wait();
+
+  std::cout << "Writing output: " << output_path << std::endl;
+  WriteBinaryPlyPoints(output_path, fuser.GetFusedPoints());
+  mvs::WritePointsVisibility(output_path + ".vis",
+                             fuser.GetFusedPointsVisibility());
 
   return EXIT_SUCCESS;
 }
