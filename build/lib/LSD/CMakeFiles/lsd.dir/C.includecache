@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/raphael/PhD_local/cpp/colmap/lib/LSD/lsd.c
+stdio.h
+-
+stdlib.h
+-
+math.h
+-
+limits.h
+-
+float.h
+-
+lsd.h
+/home/raphael/PhD_local/cpp/colmap/lib/LSD/lsd.h
+
+/home/raphael/PhD_local/cpp/colmap/lib/LSD/lsd.h
+
