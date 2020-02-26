@@ -82,7 +82,7 @@ struct StereoFusionOptions {
   // memory. A higher value leads to less disk access and faster fusion, while
   // a lower value leads to reduced memory usage. Note that a single image can
   // consume a lot of memory, if the consistency graph is dense.
-  double cache_size = 32.0;
+  double cache_size = 15.0;
 
   // Check the options for validity.
   bool Check() const;
