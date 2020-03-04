@@ -36,6 +36,10 @@ project(COLMAP)
 set(COLMAP_VERSION "3.6")
 set(COLMAP_VERSION_NUMBER "3600")
 
+# print which compiler is used
+message(STATUS "used compiler: ${CMAKE_CXX_COMPILER_ID}")
+message(STATUS "used compiler version: ${CMAKE_CXX_COMPILER_VERSION}")
+
 
 ################################################################################
 # Include CMake dependencies
