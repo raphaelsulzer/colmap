@@ -161,8 +161,8 @@ if(IS_GNU)
     # Hide incorrect warnings for uninitialized Eigen variables under GCC.
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-maybe-uninitialized")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-maybe-uninitialized")
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wint-in-bool-context")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wint-in-bool-context")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-int-in-bool-context")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-int-in-bool-context")
 endif()
 
 if(IS_DEBUG)
